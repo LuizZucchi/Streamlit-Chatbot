@@ -1,0 +1,27 @@
+[project]
+name = "skie"
+version = "0.1.0"
+description = "Challenge for skie.io"
+authors = [
+    {name = "Luiz Zucchi",email = "luiz.e.a.zucchi@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "openai (>=1.78.0,<2.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "langchain (>=0.3.25,<0.4.0)",
+    "langchain-community (>=0.3.23,<0.4.0)",
+    "langchain-openai (>=0.3.16,<0.4.0)",
+    "duckduckgo-search (>=8.0.1,<9.0.0)",
+    "streamlit (>=1.45.0,<2.0.0)"
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

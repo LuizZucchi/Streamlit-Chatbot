@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  llm-service:
+    build:
+      context: ./local_llm
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/app/models/phi-2
+      - DEVICE=cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - model-cache:/app/models
+      - ./app.py:/app/app.py
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - llm-service
+    environment:
+      - LLM_SERVICE_URL=http://llm-service:8000
+    volumes:
+      - .:/app
+    working_dir: /app
+    stdin_open: true
+    tty: true
+
+volumes:
+  model-cache:
