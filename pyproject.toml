@@ -1,7 +1,10 @@
 [project]
-name = "skie"
+name = "streamlit-chatbot"
 version = "0.1.0"
-description = "Challenge for skie.io"
+description = "Streamlit Chatbot Application"
+packages = [
+    { include = "app" }  # Add this line
+]
 authors = [
     {name = "Luiz Zucchi",email = "luiz.e.a.zucchi@gmail.com"}
 ]
@@ -15,7 +18,8 @@ dependencies = [
     "langchain-community (>=0.3.23,<0.4.0)",
     "langchain-openai (>=0.3.16,<0.4.0)",
     "duckduckgo-search (>=8.0.1,<9.0.0)",
-    "streamlit (>=1.45.0,<2.0.0)"
+    "streamlit (>=1.45.0,<2.0.0)",
+    "poetry-plugin-export (>=1.9.0,<2.0.0)"
 ]
 
 [tool.poetry]
@@ -25,3 +29,6 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"

@@ -27,9 +27,10 @@ Here you will need to install the deps with poetry (with the poetry shell pluggi
 ```
     pip install poetry-plugin-shell
     poetry init
+    poetry install
     poetry shell 
 ```
-
+Then run:
 ```
     streamlit run streamlit_app.py
 ```
